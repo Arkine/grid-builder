@@ -1,0 +1,71 @@
+# Skeleton gitignore
+
+# OS Files
+*~
+ehthumbs.db
+Thumbs.db
+.DS_Store
+.ds_store
+.project
+.idea/
+.svn
+.cvs
+*.bak
+*.swp
+*.tmproj
+_notes
+*.vscode
+
+# Build System
+node_modules
+.sass-cache
+
+# Dev Files
+*.sublime-project
+*.sublime-workspace
+*.sftp-json
+
+# WPEngine
+.smushit-status
+.gitattributes
+
+# Log Files
+*.log
+
+# Large Files (WPEngine)
+*.hqx
+*.bin
+*.exe
+*.dll
+*.deb
+*.dmg
+*.iso
+*.img
+*.msi
+*.msp
+*.msm
+*.mid
+*.midi
+*.kar
+*.mp3
+*.ogg
+*.m4a
+*.ra
+*.3gpp
+*.3gp
+*.mp4
+*.mpeg
+*.mpg
+*.mov
+*.webm
+*.flv
+*.m4v
+*.mng
+*.asx
+*.asf
+*.wmv
+*.avi
+*.zip
+*.tar
+*.tgz
+*.gz

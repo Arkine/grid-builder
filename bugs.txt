@@ -1,0 +1,10 @@
+- Line distances not drawing when dragging a line
+- Overlap Detection for when placing a line at same x|y back onto an existing line
+- Line inersects are not computing line lengths properly when bisecting at 45deg (not always)
+- Viewport starts on top-left bound of grid (should start in the center)
+	- Doesn't align pts properly if centered
+- Spacebar+click panning doesn't work unless the pan box is in focus
+- Dragging a node onto an existing node mis-calculates the line dist
+
+//TODOS
+- Create visible post markers (adjust to overflow the line according to panel length)
