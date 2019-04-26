@@ -256,7 +256,7 @@ export default class GridCanvas extends React.Component {
 				// Set a timeout to detect is spacebar is being held
 
 				// Focus the pan div so that the screen doesn't go wacky when panning using spacebar (NOT WORKING!)
-				const panDiv = document.querySelector('.gecko-fence-builder-controls__isPan');
+				const panDiv = document.querySelector('.grid-builder-controls__isPan');
 				if (panDiv) {
 					panDiv.focus();
 				}
@@ -1145,13 +1145,6 @@ export default class GridCanvas extends React.Component {
 					// Save the context settings
 					this._ctx.save();
 					this.drawLine(node.a, node.b, ctxStyles);
-
-					if (node.type === "fence") {
-						this.drawPosts(node);
-
-						// Restore the other canvas settings after drawing
-						this._ctx.restore();
-					}
 				}
 			}
 		}
@@ -1617,7 +1610,7 @@ export default class GridCanvas extends React.Component {
 		midX = midX + offset.x + pt.a.x;
 		midY = midY + offset.y + pt.a.y;
 
-		this.drawText(`${pt.distance  || 0} ${ pt.grade === 'Flat' ? '' : pt.grade}`, midX, midY, true, ptOpts);
+		this.drawText(`${pt.distance  || 0}`, midX, midY, true, ptOpts);
 	}
 
 	/**
@@ -1802,7 +1795,7 @@ export default class GridCanvas extends React.Component {
 
 	render() {
 		return (
-			<GridCanvasContainer className="gecko-fence-builder__canvas">
+			<GridCanvasContainer className="grid-builder__canvas">
 				<canvas ref={this._canvas} width={this.props.width} height={this.props.height} />
 			</GridCanvasContainer>
 		);

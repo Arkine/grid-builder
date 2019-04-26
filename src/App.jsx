@@ -18,39 +18,39 @@ import {
 
 const steps = [
 	{
-		element: '.gecko-fence-builder-controls__undo',
+		element: '.grid-builder-controls__undo',
 		intro: 'Undo the last edit'
 	},
 	{
-		element: '.gecko-fence-builder-controls__redo',
+		element: '.grid-builder-controls__redo',
 		intro: 'Redo the last edit'
 	},
 	{
-		element: '.gecko-fence-builder-controls__cd',
+		element: '.grid-builder-controls__cd',
 		intro: 'Toggles continuous drawling of lines when connecting points'
 	},
 	{
-		element: '.gecko-fence-builder-controls__labels',
+		element: '.grid-builder-controls__labels',
 		intro: 'Toggle line labels on and off',
 	},
 	{
-		element: '.gecko-fence-builder-controls__crosshairs',
+		element: '.grid-builder-controls__crosshairs',
 		intro: 'Toggle cursor crosshairs on and off'
 	},
 	{
-		element: '.gecko-fence-builder-controls__isPan',
+		element: '.grid-builder-controls__isPan',
 		intro: 'Toggles canvas panning on and off'
 	},
 	{
-		element: '.gecko-fence-builder-controls__scale',
+		element: '.grid-builder-controls__scale',
 		intro: 'Increases and decreases grid cell sizing'
 	},
 	{
-		element: '.gecko-fence-builder-controls__reset',
+		element: '.grid-builder-controls__reset',
 		intro: 'Reset the grid data'
 	},
 	{
-		element: '.gecko-fence-builder-controls__export',
+		element: '.grid-builder-controls__export',
 		intro: 'Export the grid data'
 	},
 ];
@@ -99,15 +99,6 @@ let initialState = {
 		gridScale: 35,
 		// Default box sizing (in ft.)
 		defaultBoxSize: 5,
-		// Default Panel Length (in ft.),
-		defaultPanelLength: 5,
-		// Available panel sizes
-		panelSizes: [
-			5,
-			6,
-			7,
-			8
-		],
 		// Panning offset
 		offset: {x: 0, y: 0},
 		// Snap pt to grid
@@ -129,20 +120,14 @@ let initialState = {
 			// Canvas default width
 			width: 600,
 			// Canvas default height
-			height: 400
+			height: 1000
 		}
 	}
 };
 // The default props when creating a pt
 const defaultNodeProps = {
-	// The terrain grade
-	grade: 'Flat',
-	// The type of panel (fence or gate)
-	type: 'fence',
 	// Does the user want the distance to stay fixed?
 	fixed: false,
-	// Panel length width
-	panelLength: initialState.settings.defaultPanelLength,
 	// Is this line0 hovered
 	hovered: false
 };
@@ -335,74 +320,7 @@ export default class App extends React.Component {
 	 * Exports all of the line data
 	 */
 	exportData = () => {
-		return Array.from(this.state.lines.values()).reduce((acc, lineArr) => {
-			console.log(lineArr, {acc});
-			/*
-				Example
-
-				a: {x: 665, y: 140}
-				active: false
-				b: {x: 770, y: 140}
-				distance: 15
-				fixed: false
-				grade: "Medium"
-				hovered: false
-				panelLength: 8
-				type: "fence"
-			*/
-
-			// Determine if it's a gate or fence
-				// If gate
-					// Update gate total length value
-			// Determine all posts that lie at pt
-				// Determine the total number of posts for panel
-				// If the number is greater than 1, determine the post type (3 way, corner, inline, etc...)
-				// Update the total posts of type values
-
-			// Determine the type of panel (5', 6', etc...)
-				// If type x
-					// Determine the grade of panel
-					// Update the totalDistance for that panel width & grade in ft
-
-			return acc;
-		}, {
-			// Total Distance of each type of panel (in ft.)
-			totalDistance: {
-				'5': {
-					'flat': 0,
-					'medium': 0,
-					'steep': 0,
-				},
-				'6': {
-					'flat': 0,
-					'medium': 0,
-					'steep': 0,
-				},
-				'7': {
-					'flat': 0,
-					'medium': 0,
-					'steep': 0,
-				},
-				'8': {
-					'flat': 0,
-					'medium': 0,
-					'steep': 0,
-				},
-			},
-			// Total gate distance
-			gates: 0,
-			// Total number of posts
-			posts: {
-				// Posts where 3 panels connect
-				'3-way': 0,
-				// The last post in a panel
-				'end': 0,
-				// Post where 2 panels meet at a 90
-				'corner': 0,
-				// Post where 2 panels meet in parallel
-				'inline': 0,
-			}
-		});
+		return this.state.lines;
 	}
 
 	/**
@@ -788,7 +706,6 @@ export default class App extends React.Component {
 	 * @param {Event} e
 	 */
 	handleIntroExit = e => {
-		console.log('here intro exit')
 		this.disableIntroState();
 	}
 
@@ -898,7 +815,6 @@ export default class App extends React.Component {
 	 * On Measurer menu close
 	 */
 	handleMeasurerClose() {
-		console.log('closing measuere');
 		// Find the active Line and de-activate it
 		if (this.state.activeLine) {
 			const al = this.findLine(this.state.activeLine);
@@ -935,7 +851,7 @@ export default class App extends React.Component {
 
 	render() {
 		return (
-			<AppContainer className="gecko-fence-builder" ref={this._container}>
+			<AppContainer className="grid-builder" ref={this._container}>
 				<Steps
 					enabled={this.state.settings.stepsEnabled}
 					steps={steps}
@@ -1022,8 +938,8 @@ export default class App extends React.Component {
 					/>
 				}
 
-				<NextButton active={this.state.sidebarActive} offset={this.state.measurer} onClick={this.exportData} className="wp-block-button gecko-fence-builder-controls__export is-style-arrow">
-					<a href="#" className="wp-block-button_link">Calculate</a>
+				<NextButton active={this.state.sidebarActive} offset={this.state.measurer} onClick={this.exportData} className="wp-block-button grid-builder-controls__export is-style-arrow">
+					<a href="#">Calculate</a>
 				</NextButton>
 			</AppContainer>
 		);
