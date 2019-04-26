@@ -10,14 +10,10 @@ import Measurer from './components/Measurer';
 import { FontAwesomeIcon } from './lib/FontAwesomeIcon';
 
 
-import premade1 from './assets/premade-1.png';
-import { premadeDataSetA } from './premade';
-
 import {
 	Errors,
 	AppContainer,
-	NextButton,
-	PremadeSelect
+	NextButton
 } from './AppStyled';
 
 const steps = [
@@ -90,8 +86,6 @@ let initialState = {
 	lastDragPos: null,
 	// Sidebar visible
 	sidebarActive: true,
-	// Show the pre-made options?
-	premadeSelect: false,
 	settings: {
 		// Are the intro steps enabled?
 		stepsEnabled: true,
@@ -298,14 +292,6 @@ export default class App extends React.Component {
 		});
 	}
 
-
-	togglePremadeSelect() {
-		console.log('toggling premade select');
-		this.setState({
-			premadeSelect: !this.state.premadeSelect
-		});
-	}
-
 	/**
 	 * Toggles drawing crosshairs
 	 */
@@ -343,8 +329,6 @@ export default class App extends React.Component {
 		this.setState({
 			lines: new Map(data)
 		});
-
-		this.togglePremadeSelect();
 	}
 
 	/**
@@ -806,13 +790,6 @@ export default class App extends React.Component {
 	handleIntroExit = e => {
 		console.log('here intro exit')
 		this.disableIntroState();
-		// Enable the pre-made points select screen
-		this.togglePremadeSelect();
-	}
-
-	handlePremadeExit() {
-		// Close the premade select screen
-		this.togglePremadeSelect();
 	}
 
 	/**
@@ -948,7 +925,6 @@ export default class App extends React.Component {
 			lastSelected: null,
 			measurer: null,
 			lastDragPos: null,
-			premadeSelect: true,
 			settings: {
 				...this.state.settings,
 				offset: {x: 0, y: 0},
@@ -971,20 +947,6 @@ export default class App extends React.Component {
 					enabled={this.state.settings.hints}
 					hints={hints}
 				/>
-
-				{this.state.premadeSelect &&
-					<PremadeSelect>
-						<PremadeSelect.Overlay />
-						<PremadeSelect.Content>
-							<FontAwesomeIcon icon="close-window" />
-							<h2>Chose from one of our premade templates</h2>
-							<PremadeSelect.Templates>
-								<PremadeSelect.Template url={premade1} onClick={() => this.preloadData(premadeDataSetA)} />
-								<PremadeSelect.Template onClick={() => this.preloadData(null)} />
-							</PremadeSelect.Templates>
-						</PremadeSelect.Content>
-					</PremadeSelect>
-				}
 
 				{this.state.errors.length > 0 &&
 					<Errors>

@@ -1,3 +1,5 @@
+import React from 'react';
+
 export function FontAwesomeIcon(props) {
 	const classNames = [
 		props.className,

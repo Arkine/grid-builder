@@ -1,7 +1,0 @@
-export default () => (
-	<svg width="51px" height="20px" viewBox="0 0 51 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-		<g id="flat" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
-			<path d="M24.8125,-5.80952381 L24.8125,41.8095238" id="Line-Copy-16" stroke="#333333" stroke-width="2" fill-rule="nonzero" transform="translate(25.000000, 18.000000) rotate(-270.000000) translate(-25.000000, -18.000000) "></path>
-		</g>
-	</svg>
-)
