@@ -1299,15 +1299,6 @@ export default class GridCanvas extends React.Component {
 					const CA2 = (y - pt4.y) * (pt1.x - pt4.x) - (x - pt4.x) * (pt1.y - pt4.y);
 
 					if (this._debug) {
-						// console.log({
-						// 	a: pt1,
-						// 	b: pt2,
-						// 	c: pt3,
-						// 	d: pt4,
-						// 	x,
-						// 	y,
-						// 	line
-						// });
 						this.drawCones({
 							a: pt1,
 							b: pt2,
