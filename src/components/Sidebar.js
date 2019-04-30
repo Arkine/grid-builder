@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { FontAwesomeIcon } from '../lib/FontAwesomeIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faQuestionCircle} from '@fortawesome/free-regular-svg-icons';
+import {faUndo, faRedo, faCog, faChevronLeft, faChevronRight} from '@fortawesome/free-solid-svg-icons';
 
 import {
 	Container,
@@ -30,14 +32,14 @@ export default class Sidebar extends React.Component {
 
 	render() {
 		const {settings} = this.props;
-		const chevron = this.props.sidebarActive ? 'chevron-left' : 'chevron-right';
+		const chevron = this.props.sidebarActive ? faChevronLeft : faChevronRight;
 
 		return (
 			<Container ref={this._viewport} active={this.props.sidebarActive}>
 				<Controls className="grid-builder-controls">
 					<Controls.Actions>
-						<LabelButton className="grid-builder-controls__undo" onClick={this.props.handleUndo}><FontAwesomeIcon icon='undo' />Undo</LabelButton>
-						<LabelButton className="grid-builder-controls__redo" onClick={this.props.handleRedo}>Redo<FontAwesomeIcon icon='redo' /></LabelButton>
+						<LabelButton className="grid-builder-controls__undo" onClick={this.props.handleUndo}><FontAwesomeIcon icon={faUndo} />Undo</LabelButton>
+						<LabelButton className="grid-builder-controls__redo" onClick={this.props.handleRedo}>Redo<FontAwesomeIcon icon={faRedo} /></LabelButton>
 					</Controls.Actions>
 					<Controls.Menu>
 						<Controls.MenuItem className="grid-builder-controls__cd" active={settings.continuousDraw}>
@@ -70,12 +72,12 @@ export default class Sidebar extends React.Component {
 						</Controls.MenuItem>
 					</Controls.Menu>
 					<Footer>
-						<Footer.Button className="grid-builder-controls__reset" onClick={this.props.handleReset}><label>Reset</label><FontAwesomeIcon icon='undo' /></Footer.Button>
-						<Footer.Button className="grid-builder-controls__help" active={settings.help} onClick={this.props.toggleHints}><label>Help</label><FontAwesomeIcon icon='question-circle' /></Footer.Button>
+						<Footer.Button className="grid-builder-controls__reset" onClick={this.props.handleReset}><label>Reset</label><FontAwesomeIcon icon={faUndo} /></Footer.Button>
+						<Footer.Button className="grid-builder-controls__help" active={settings.help} onClick={this.props.toggleHints}><label>Help</label><FontAwesomeIcon icon={faQuestionCircle} /></Footer.Button>
 					</Footer>
 				</Controls>
 				<Container.Tab onClick={this.onTabClick}>
-					<Gear icon='cog' />
+					<Gear icon={faCog} />
 					<Chevron icon={chevron} />
 				</Container.Tab>
 			</Container>

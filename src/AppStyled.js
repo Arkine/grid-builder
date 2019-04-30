@@ -1,4 +1,4 @@
-import { FontAwesomeIcon } from './lib/FontAwesomeIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled, {keyframes} from 'styled-components';
 
 const cornFlowerBlue = '#53A4CE';
@@ -49,6 +49,10 @@ export const Container = styled.div`
 
 	background-color: #fff;
 	box-shadow: 0 10px 20px 5px rgba(0,0,0, 0.3);
+
+	button {
+		background-color: ${salmon};
+	}
 
 	${Gear} {
 		&::before {

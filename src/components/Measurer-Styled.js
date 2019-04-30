@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {FontAwesomeIcon} from '../lib/FontAwesomeIcon';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 const cloud = '#E9E9E9';
 const salmon = '#E24517';

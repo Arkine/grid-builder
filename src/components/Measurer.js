@@ -1,13 +1,12 @@
 import React from 'react';
 
-import SVG from './Svg';
 import {
 	Container,
 	Distance,
 	CloseButton,
-	Type,
-	Sizes
 } from './Measurer-Styled';
+import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faWindowClose } from '@fortawesome/free-regular-svg-icons';
 
 
 export default class Measurer extends React.Component {
@@ -106,12 +105,12 @@ export default class Measurer extends React.Component {
 					</Container.Section>
 
 					<Container.FooterSection onClick={this.handleDeleteClick}>
-						<CloseButton icon='times-circle' />
+						<CloseButton icon={faTimesCircle} />
 						<span>Delete Section</span>
 					</Container.FooterSection>
 				</Container.Inner>
 
-				<Container.TabClose icon='window-close' onClick={this.handleCloseMenu} />
+				<Container.TabClose icon={faWindowClose} onClick={this.handleCloseMenu} />
 			</Container>
 		);
 	}
