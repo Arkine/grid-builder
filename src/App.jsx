@@ -1,5 +1,4 @@
 import React from 'react';
-import {Steps, Hints} from 'intro.js-react';
 
 import StorageAPI from './helpers/localStorage';
 
@@ -7,7 +6,7 @@ import GridCanvas from './components/GridCanvas';
 import Sidebar from './components/Sidebar';
 import Error from './components/Error';
 import Measurer from './components/Measurer';
-import { FontAwesomeIcon } from './lib/FontAwesomeIcon';
+// import { FontAwesomeIcon } from './lib/FontAwesomeIcon';
 
 
 import {
