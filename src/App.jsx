@@ -16,53 +16,6 @@ import {
 	NextButton
 } from './AppStyled';
 
-const steps = [
-	{
-		element: '.grid-builder-controls__undo',
-		intro: 'Undo the last edit'
-	},
-	{
-		element: '.grid-builder-controls__redo',
-		intro: 'Redo the last edit'
-	},
-	{
-		element: '.grid-builder-controls__cd',
-		intro: 'Toggles continuous drawling of lines when connecting points'
-	},
-	{
-		element: '.grid-builder-controls__labels',
-		intro: 'Toggle line labels on and off',
-	},
-	{
-		element: '.grid-builder-controls__crosshairs',
-		intro: 'Toggle cursor crosshairs on and off'
-	},
-	{
-		element: '.grid-builder-controls__isPan',
-		intro: 'Toggles canvas panning on and off'
-	},
-	{
-		element: '.grid-builder-controls__scale',
-		intro: 'Increases and decreases grid cell sizing'
-	},
-	{
-		element: '.grid-builder-controls__reset',
-		intro: 'Reset the grid data'
-	},
-	{
-		element: '.grid-builder-controls__export',
-		intro: 'Export the grid data'
-	},
-];
-
-const hints = steps.map(step => {
-	return {
-		element: step.element,
-		hint: step.intro,
-		hintPosition: 'middle-middle'
-	}
-});
-
 let initialState = {
 	// All of our pt data
 	lines: new Map(),
@@ -88,7 +41,7 @@ let initialState = {
 	sidebarActive: true,
 	settings: {
 		// Are the intro steps enabled?
-		stepsEnabled: true,
+		// stepsEnabled: true,
 		// Draw crosshairs
 		crosshairs: true,
 		// Is the help option enabled
@@ -196,6 +149,7 @@ export default class App extends React.Component {
 			const diffX = ((this._container.current.clientWidth * 100) / startWidth) / 100;
 			const diffY = ((this._container.current.clientHeight * 100) / startHeight) / 100;
 
+
 			this.updateSettings({
 				dimensions: {
 					...this.state.settings.dimensions,
@@ -295,20 +249,20 @@ export default class App extends React.Component {
 	/**
 	 * Toggles the intro state
 	 */
-	disableIntroState() {
-		this.updateSettings({
-			stepsEnabled: false
-		});
-	}
+	// disableIntroState() {
+	// 	this.updateSettings({
+	// 		stepsEnabled: false
+	// 	});
+	// }
 
 	/**
 	 * Toggles showing hints
 	 */
-	toggleHints = () => {
-		this.updateSettings({
-			hints: !this.state.settings.hints
-		});
-	}
+	// toggleHints = () => {
+	// 	this.updateSettings({
+	// 		hints: !this.state.settings.hints
+	// 	});
+	// }
 
 	preloadData(data) {
 		this.setState({
@@ -852,18 +806,6 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<AppContainer className="grid-builder" ref={this._container}>
-				<Steps
-					enabled={this.state.settings.stepsEnabled}
-					steps={steps}
-					initialStep={0}
-					onExit={this.handleIntroExit}
-				/>
-
-				<Hints
-					enabled={this.state.settings.hints}
-					hints={hints}
-				/>
-
 				{this.state.errors.length > 0 &&
 					<Errors>
 						{this.state.errors.map((err, i) => <Error key={`Error-${i}`} message={err.message} onCloseError={() => this.handleErrorClose(i)} />)}

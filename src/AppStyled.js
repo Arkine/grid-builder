@@ -281,4 +281,7 @@ export const NextButton = styled.div`
 
 export const AppContainer = styled.div`
 	overflow: hidden;
+
+	height: 100%;
+	width: 100%;
 `;

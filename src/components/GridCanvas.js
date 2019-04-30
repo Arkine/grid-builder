@@ -7,6 +7,9 @@ import SliceTool from '../assets/slice.png';
 
 const GridCanvasContainer = styled.div`
 	position: relative;
+
+	height: 100%;
+	width: 100%;
 `;
 
 const colors = {
@@ -1145,6 +1148,7 @@ export default class GridCanvas extends React.Component {
 					// Save the context settings
 					this._ctx.save();
 					this.drawLine(node.a, node.b, ctxStyles);
+					this._ctx.restore();
 				}
 			}
 		}
